@@ -9,6 +9,7 @@ public class Main {
         Stack<Carta> jugador1 = new Stack<>();
         Stack<Carta> banca = new Stack<>();
         boolean plantar = false;
+        boolean victoria = false;
         Scanner teclado = new Scanner(System.in);
         String respuesta;
 
@@ -17,7 +18,7 @@ public class Main {
         jugador1 = juego.repartirCartas();
         banca = juego.repartirCartas();
 
-        while(!plantar){
+        while(!plantar && !victoria){
             System.out.println("¿Deseas pedir una carta?");
 
             if(teclado.hasNextLine()){
@@ -35,6 +36,7 @@ public class Main {
             }
             System.out.println(jugador1);
             System.out.println(banca);
+            victoria = juego.aplicarReglas(jugador1, banca, plantar);
         }
     }
 }
